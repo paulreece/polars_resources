@@ -1,7 +1,7 @@
 # Polars Resources
 - [Ruby Polars Repo/Docs](https://github.com/ankane/polars-ruby)
 - [Polars API reference](https://pola-rs.github.io/polars/py-polars/html/reference/index.html)
-
+- [Vega](https://github.com/ankane/vega-ruby) -- Graphing library to use with Polars
 
 ## Machine Learning/AI
 - [Awesome Machine Learning with Ruby repo](https://github.com/arbox/machine-learning-with-ruby)
@@ -19,6 +19,18 @@
 - [Prophet.rb](https://github.com/ankane/prophet-ruby) is a forecasting library. It supports multiple seasonalities, holidays, growth caps, and many other features.
 - [MITIE](https://github.com/ankane/mitie-ruby) does named-entity recognition. It finds people, organizations, and locations in text.
 
-## Other DataFrame Libraries
+## Other DataFrame Gems
+- [Daru](https://github.com/SciRuby/daru)
 - [Rover](https://github.com/ankane/rover)
 - [RedAmber](https://github.com/red-data-tools/red_amber)
+
+## Jupyter Notebook
+- [Iruby](https://github.com/SciRuby/iruby)
+- [Jupyter](https://docs.jupyter.org/en/latest/install.html)
+
+## N-dimensional Array Gems
+- [Numo::NArray](https://github.com/ruby-numo/numo-narray)
+- [NMatrix](https://github.com/SciRuby/nmatrix)
+
+## Misc
+- [SciRuby](https://github.com/SciRuby)
