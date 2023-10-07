@@ -25,7 +25,7 @@
 - [RedAmber](https://github.com/red-data-tools/red_amber)
 
 ## Jupyter Notebook
-- [Iruby](https://github.com/SciRuby/iruby)
+- [IRuby](https://github.com/SciRuby/iruby)
 - [Jupyter](https://docs.jupyter.org/en/latest/install.html)
 
 ## N-dimensional Array Gems
