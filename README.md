@@ -12,6 +12,7 @@
 - Machine learning Docker images for Ruby [ml-stack](https://github.com/ankane/ml-stack)
 - [Rumale](https://github.com/yoshoku/rumale) (Ruby machine learning) is a machine learning library in Ruby. Rumale provides machine learning algorithms with interfaces similar to Scikit-Learn in Python.
 - [ONNX Runtime Ruby](https://github.com/ankane/onnxruntime-ruby) high performance scoring engine for ML models - for Ruby
+- [X Ruby AI community](https://twitter.com/i/communities/1709211359039078677)
 ### Deep Learning
 - [Torch.rb](https://github.com/ankane/torch.rb) and [TensorFlow](https://github.com/ankane/tensorflow-ruby)
 - [TorchVision](https://github.com/ankane/torchvision-ruby) for computer vision tasks
