@@ -6,6 +6,7 @@
 ## Social Communities
 - [X Ruby AI group](https://twitter.com/i/communities/1709211359039078677)
 - [Mastodon Ruby AI and Data group](https://ruby.social/@Ruby_AI_and_Data@chirp.social)
+- [Mastodon Ruby AI and Data group](https://ruby.social/@Ruby_AI_and_Data@chirp.social)
 
 ## Machine Learning/AI
 - [Awesome Machine Learning with Ruby repo](https://github.com/arbox/machine-learning-with-ruby)
