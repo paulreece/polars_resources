@@ -44,3 +44,14 @@
 - [Outlier Detection and Removal](https://medium.com/analytics-vidhya/removing-outliers-understanding-how-and-what-behind-the-magic-18a78ab480ff)
 
   This is done in Python but the concepts are the same and we can easily do these in Ruby Polars. Introduces you to IQR and Standard Deviation, the two main outlier removal types.
+```Ruby
+# Std Deviation
+quantity_outliers = df.filter(
+    (Polars.col('selected_column') < (Polars.col('selected_column').mean() - (3 * Polars.col('selected_column').std())))
+    | (Polars.col('selected_column') > (Polars.col('selected_column').mean() + (3 * Polars.col('selected_column').std())))
+)
+
+#IQR
+s = Polars::Series.new("Measurements", [-1.01,  0.86, -4.60, 3.98,  0.53, -7.04, 3.98,  0.53, -7.04])
+s.quantile(0.75, interpolation:"nearest")
+```
