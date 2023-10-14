@@ -40,6 +40,8 @@
 - [NMatrix](https://github.com/SciRuby/nmatrix)
 
 ## Misc
+- [X Ruby AI group](https://twitter.com/i/communities/1709211359039078677)
+- [Mastodon Ruby AI and Data group](@Ruby_AI_and_Data@chirp.social)
 - [SciRuby](https://github.com/SciRuby)
 - [Outlier Detection and Removal](https://medium.com/analytics-vidhya/removing-outliers-understanding-how-and-what-behind-the-magic-18a78ab480ff) Though in Python it's a good high level introduction to the statistical concepts. Introduces you to IQR and Standard Deviation, the two main outlier removal types.
 ```Ruby
