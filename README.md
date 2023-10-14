@@ -42,4 +42,5 @@
 ## Misc
 - [SciRuby](https://github.com/SciRuby)
 - [Outlier Detection and Removal](https://medium.com/analytics-vidhya/removing-outliers-understanding-how-and-what-behind-the-magic-18a78ab480ff)
-  This is done in Python but the concepts are the same and we can easily do these in Ruby Polars.
+
+  This is done in Python but the concepts are the same and we can easily do these in Ruby Polars. Introduces you to IQR and Standard Deviation, the two main outlier removal types.
