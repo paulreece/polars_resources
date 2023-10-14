@@ -43,13 +43,18 @@
 - [SciRuby](https://github.com/SciRuby)
 - [Outlier Detection and Removal](https://medium.com/analytics-vidhya/removing-outliers-understanding-how-and-what-behind-the-magic-18a78ab480ff) Though in Python it's a good high level introduction to the statistical concepts. Introduces you to IQR and Standard Deviation, the two main outlier removal types.
 ```Ruby
-# Std Deviation
-quantity_outliers = df.filter(
-    (Polars.col('selected_column') < (Polars.col('selected_column').mean() - (3 * Polars.col('selected_column').std())))
-    | (Polars.col('selected_column') > (Polars.col('selected_column').mean() + (3 * Polars.col('selected_column').std())))
-)
+
+# Std Deviation - filtering 2 std deviations away
+df = Polars::DataFrame.new({'example' => [10, 20, 30, 40, 50, 10000]})
+mean = df['example'].mean
+std = df['example'].std
+outliers = (df['example'] < mean + (2 * std)) & (df['example'] > mean - (2 * std))
+removed = df.filter(outliers)
+
+#one liner
+removed = df.filter((df['example'] < df['example'].mean + (2 * df['example'].std)) & (df['example'] > df['example'].mean - (2 * df['example'].std)))
 
 #IQR
-s = Polars::Series.new("Measurements", [-1.01,  0.86, -4.60, 3.98,  0.53, -7.04, 3.98,  0.53, -7.04])
-s.quantile(0.75, interpolation:"nearest")
+series = Polars::Series.new('example', [-2.08,  1.9, -5.70, 7.08,  0.73, -3.50, 2.57,  0.21, -9.26])
+series.quantile(0.75, interpolation:"nearest")
 ```
