@@ -31,7 +31,7 @@ df = df.with_columns(Polars.col("column_name").fill_nan(7.5))
 df.drop_nulls()
 df.drop_nans()
 ```
-###Filtering
+### Filtering
 ```Ruby
 df.filter(Polars.col("column_name") == Value)
 ```
