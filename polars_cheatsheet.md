@@ -1,3 +1,44 @@
+
+### **`with_columns`**<br/> 
+Return a version of your df back including all of it's columns. An argument is required, even if you're just selecting a column.<br/> 
+It's important to know for many operations used in cleaning Data.
+```Ruby
+combined_df.with_columns(your_argument)
+combined_df.with_columns(Polars.col("selected_column"))
+```
+### `Polars.col` vs df["column_name"]
+`Polars.col` selects your specified column from the DataFrame and returns a Dataframe(if used on a DataFrame).  I recommend this as the go to for most cleaning Data operations.
+```Ruby
+irb(main):> combined_df.select(Polars.col("year"))
+=>
+shape: (6, 1)
+┌──────┐
+│ year │
+│ ---  │
+│ i64  │
+╞══════╡
+│ 1984 │
+│ 1985 │
+│ 1993 │
+└──────┘
+```
+`df["column_name"]`<br/> 
+Returns a Series.  Mainly used in column-wise operations.
+```Ruby
+irb(main):> combined_df["year"]
+=>
+shape: (6,)
+Series: 'year' [i64]
+[
+	1984
+	1985
+	1993
+	1993
+	2010
+	1999
+]
+```
+
 ### Turning JSON into a DataFrame
 ```Ruby
 Polars::DataFrame.new(json_response["response"]["data"])
@@ -55,7 +96,7 @@ df = df.drop(["column_one", "column_two"])
 ```
 ### Convert String column to DateTime
 ```Ruby
-df.with_columns(Polars.col("date_added").str.to_datetime(format = "%m/%d/%Y", time_unit: 'ns’))
+df.with_columns(Polars.col("date_added").str.to_datetime(format = "%m/%d/%Y", time_unit: "ns"))
 ```
 ### Combining DataFrames
 ```Ruby
@@ -66,7 +107,7 @@ df = df.vstack(df_two)
 df = df.hstack(df_two)
 
 # Join
-df = df.join(df_two, on="column_name", how=['inner', 'left' 'outer', 'semi' 'anti' 'cross'])
+df = df.join(df_two, on="column_name", how=["inner", "left" "outer", "semi" "anti" "cross"])
 ```
 
 ### Dropping Duplicates
@@ -80,7 +121,7 @@ df = df.with_columns(Polars.col("date").month.alias("month"))
 
 ### Converting Column Values with Hash from one type to another
 ```Ruby
-month_hash = {1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'}
+month_hash = {1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"}
 month_names = Polars::Series.new(combined_df.select(Polars.col("month")).rows.map{ |k| month_hash[k[0]] })
 df = df.with_columns(month_names.alias("month"))
 ```
