@@ -45,10 +45,16 @@ Polars::DataFrame.new(json_response["response"]["data"])
 
 ```
 
-### Renaming Columns
+### Renaming All Columns
 ```Ruby
 df.columns = ["your", "new", "column", "names"]
 
+```
+
+### Renaming a Single or Multiple Columns
+```Ruby
+df.rename({"foo" => "apple"})
+df.rename({"foo" => "apple", "bar" => "orange"})
 ```
 
 ### Finding Null and Nan
