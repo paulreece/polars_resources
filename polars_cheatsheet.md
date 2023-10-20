@@ -62,6 +62,11 @@ df.rename({"foo" => "apple", "bar" => "orange"})
 ```Ruby
 df.null_count
 
+#Count of all the Nans
+nan_cols = df.columns.filter_map { |col|  col if df[col].is_numeric}
+df.select(Polars.col(nan_cols).is_nan.sum)
+
+#Specific Columns NaN
 df.filter(Polars.col("column_name").is_nan())
 
 ```
