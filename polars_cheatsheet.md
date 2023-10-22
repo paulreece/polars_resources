@@ -40,7 +40,7 @@ Series: 'year' [i64]
 	1999
 ]
 ```
-Use `get_columns` if you would like to get all columns returned as Series
+Use `get_columns` if you would like to get all columns returned as an Array of Series
 ```Ruby
 df.get_columns
 ```
