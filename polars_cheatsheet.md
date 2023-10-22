@@ -46,7 +46,7 @@ df.get_columns
 ```
 ### Turning JSON into a DataFrame
 ```Ruby
-Polars::DataFrame.new(json_response["response"]["data"])
+df = Polars::DataFrame.new(json_response["response"]["data"])
 
 ```
 
