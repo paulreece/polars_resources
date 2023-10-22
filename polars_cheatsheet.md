@@ -94,7 +94,7 @@ df.filter(Polars.col("column_name") == Value)
 ```
 ### Add Column
 ```Ruby
-#Insert same value in each column
+# Insert same value in each row.
 df.with_columns(Polars.lit("Value").alias("column_name"))
 
 #Insert a Series of Values as new column
@@ -139,7 +139,7 @@ df = df.with_columns(Polars.col("date").month.alias("month"))
 ```Ruby
 month_hash = {1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"}
 month_names = df.get_column("month").map { |k| month_hash[k] }
-df = combined_df.with_columns(month_names.alias("month"))
+df = df.with_columns(month_names.alias("month"))
 
 ```
 
@@ -149,9 +149,9 @@ df = combined_df.with_columns(month_names.alias("month"))
 gem "vega"  
  
 #Install and import JS dependencies
-import "vega”
-import "vega-lite”
-import "vega-embed”
+import "vega"
+import "vega-lite"
+import "vega-embed"
 
 # In controller  
 def index
@@ -159,7 +159,7 @@ def index
 end
 
 #In erb/template file  
-<%= @movie_df.plot("name", "rank", type: ”line")
+<%= @movie_df.plot("name", "rank", type: "line")
 ```
 
 ### Column-wise Operations
