@@ -71,7 +71,7 @@ df.null_count
 nan_cols = movie_df.get_columns.filter_map { |col| col.name if col.is_numeric}
 df.select(Polars.col(nan_cols).is_nan.sum)
 
-#Specific Columns wiht NaN
+#Specific Columns with NaN
 df.filter(Polars.col("column_name").is_nan)
 
 ```
