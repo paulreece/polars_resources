@@ -3,14 +3,14 @@
 Return a version of your df back including all of it's columns. An argument is required, even if you're just selecting a column.<br/> 
 It's important to know for many operations used in cleaning Data.
 ```Ruby
-combined_df.with_columns(your_argument)
-combined_df.with_columns(Polars.col("selected_column"))
+df.with_columns(your_argument)
+df.with_columns(Polars.col("selected_column"))
 ```
-### `Polars.col` vs df["column_name"]
+### `Polars.col` vs `get_column`
 `Polars.col` selects your specified column from the DataFrame and returns a Dataframe(if used on a DataFrame).  I recommend this as the go to for most cleaning Data operations.
 
 ```Ruby
-irb(main):> combined_df.select(Polars.col("year"))
+df.select(Polars.col("year"))
 =>
 shape: (6, 1)
 ┌──────┐
@@ -23,11 +23,11 @@ shape: (6, 1)
 │ 1993 │
 └──────┘
 ```
-`df["column_name"]`<br/> 
+`df.get_column("column_name")`<br/> 
 When doing mathematical operations(excluding comparisons <, > etc) and transforming values with a hash, we want a series, so use square brackets. For everything else try to use Polars.col as a default
 Returns a Series.  Mainly used in column-wise operations.
 ```Ruby
-irb(main):> combined_df["year"]
+df.get_column("year")
 =>
 shape: (6,)
 Series: 'year' [i64]
@@ -40,7 +40,10 @@ Series: 'year' [i64]
 	1999
 ]
 ```
-
+Use `get_columns` if you would like to get all columns returned as Series
+```Ruby
+df.get_columns
+```
 ### Turning JSON into a DataFrame
 ```Ruby
 Polars::DataFrame.new(json_response["response"]["data"])
@@ -135,8 +138,9 @@ df = df.with_columns(Polars.col("date").month.alias("month"))
 ### Converting Column Values with Hash from one type to another
 ```Ruby
 month_hash = {1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"}
-month_names = Polars::Series.new(combined_df.select(Polars.col("month")).rows.map{ |k| month_hash[k[0]] })
-df = df.with_columns(month_names.alias("month"))
+month_names = df.get_column("month").map { |k| month_hash[k] }
+df = combined_df.with_columns(month_names.alias("month"))
+
 ```
 
 ### Creating Charts
@@ -161,14 +165,14 @@ end
 ### Column-wise Operations
 ```Ruby
 # Single Column
-df["column_name"] * value
-df["column_name"] / value
-df["column_name"] - value
-df["column_name"] + value
+df.get_column("column_name") * value
+df.get_column("column_name") / value
+df.get_column("column_name") - value
+df.get_column("column_name") + value
 
 # Operations on columns with column
-df["column_one"] * df["column_two"]
-df["column_one"] / df["column_two"]
-df["column_one"] - df["column_two"]
-df["column_one"] + df["column_two"]
+df.get_column("column_one") * df.get_column("column_two")
+df.get_column("column_one") / df.get_column("column_two")
+df.get_column("column_one") - df.get_column("column_two")
+df.get_column("column_one") + df.get_column("column_two")
 ```
