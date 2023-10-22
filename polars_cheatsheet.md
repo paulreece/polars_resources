@@ -68,11 +68,11 @@ df.rename({"foo" => "apple", "bar" => "orange"})
 df.null_count
 
 #Count of all the NaNs
-nan_cols = df.columns.filter_map { |col|  col if df[col].is_numeric}
+nan_cols = movie_df.get_columns.filter_map { |col| col.name if col.is_numeric}
 df.select(Polars.col(nan_cols).is_nan.sum)
 
 #Specific Columns wiht NaN
-df.filter(Polars.col("column_name").is_nan())
+df.filter(Polars.col("column_name").is_nan)
 
 ```
 ### Filling Null and Nan
