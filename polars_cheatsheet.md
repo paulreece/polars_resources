@@ -24,8 +24,8 @@ shape: (6, 1)
 └──────┘
 ```
 `df.get_column("column_name")`<br/> 
-When doing mathematical operations(excluding comparisons <, > etc) and transforming values with a hash, we want a series, so use square brackets. For everything else try to use Polars.col as a default
-Returns a Series.  Mainly used in column-wise operations.
+When doing mathematical operations(excluding comparisons <, >, etc) and transforming values with a hash, we want to work with a series. This method returns the selected column as a `Series`
+
 ```Ruby
 df.get_column("year")
 =>
