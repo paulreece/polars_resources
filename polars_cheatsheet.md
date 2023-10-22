@@ -8,6 +8,7 @@ combined_df.with_columns(Polars.col("selected_column"))
 ```
 ### `Polars.col` vs df["column_name"]
 `Polars.col` selects your specified column from the DataFrame and returns a Dataframe(if used on a DataFrame).  I recommend this as the go to for most cleaning Data operations.
+
 ```Ruby
 irb(main):> combined_df.select(Polars.col("year"))
 =>
@@ -23,6 +24,7 @@ shape: (6, 1)
 └──────┘
 ```
 `df["column_name"]`<br/> 
+When doing mathematical operations(excluding comparisons <, > etc) and transforming values with a hash, we want a series, so use square brackets. For everything else try to use Polars.col as a default
 Returns a Series.  Mainly used in column-wise operations.
 ```Ruby
 irb(main):> combined_df["year"]
